@@ -13,5 +13,18 @@ Finalmente instancia un conjuntos de threads Productor y Consumidor
 
 """
 
-## Preguntas
+## Ejercicio
+ 
+1. Leer y analizar que hace el código de este programa. 
+**Analizar hasta comprender todas las líneas del código**
 
+2. Ejecute el programa y analice los resultados. Con mucha probabilidad va a observar resultados inconsistentes y/o errores. Explique a que se deben.
+
+3. **Utilizando Locks o RLocks solamente**, modificar los objetos Productor y Consumidor de modo que solucionen los erroes e inconsistencias.
+
+4. Modificar el programa de modo que el productor inserte objetos tupla de strings **tomados al azar** de la siguiente lista. 
+   Esta lista contiene tuplas ("<pais>", "<capital>"). El consumidor debe imprimir un mensaje: "La capital de "<pais>" es "<capital>".
+```
+[("España","Madrid"), ("Francia","Paris"),("Italia","Roma"),("Inglaterra","Londres"),("Alemania","Berlin",("Rusia","Moscu"),("Turquia","Istambul"),("China","Pekin"), ("Japon","Tokio"),("Emiratos Arabes","Dubai"),("Argentina","Buenos Aires"),("Brasil","Brasilia"),("Colombia","Bogota"),("Uruguay","Montevideo")]
+```
+El programa no debe mostrar inconsistencias ni errores.
