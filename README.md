@@ -22,7 +22,6 @@ Finalmente instancia un conjuntos de threads Productor y Consumidor
 3. **Utilizando Locks o RLocks solamente**, modificar los objetos Productor y Consumidor de modo que solucionen los erroes e inconsistencias.
 
 
-
 ## Ejercicio 2
 
 1. **Sin alterar la clase *listaFinita***, modificar el programa de modo que el productor inserte objetos tupla de strings **tomados al azar** de la siguiente lista. 
