@@ -1,7 +1,8 @@
 # Problemas Clasicos de Programación Concurrente 1
 
-## Productor Consumidor 1
+# Productor Consumidor
 
+## Ejercicio 1
 ````
 Productor_Consumidor_1.py
 ````
@@ -12,8 +13,6 @@ A continuación implementa dos objetos derivados de Thread, un "Productor" que i
 Finalmente instancia un conjuntos de threads Productor y Consumidor
 
 """
-
-## Ejercicio
  
 1. Leer y analizar que hace el código de este programa. 
 **Analizar hasta comprender todas las líneas del código**
@@ -22,9 +21,20 @@ Finalmente instancia un conjuntos de threads Productor y Consumidor
 
 3. **Utilizando Locks o RLocks solamente**, modificar los objetos Productor y Consumidor de modo que solucionen los erroes e inconsistencias.
 
-4. Modificar el programa de modo que el productor inserte objetos tupla de strings **tomados al azar** de la siguiente lista. 
-   Esta lista contiene tuplas ("<pais>", "<capital>"). El consumidor debe imprimir un mensaje: "La capital de "<pais>" es "<capital>".
+
+
+## Ejercicio 2
+
+1. **Sin alterar la clase *listaFinita***, modificar el programa de modo que el productor inserte objetos tupla de strings **tomados al azar** de la siguiente lista. 
 ```
-[("España","Madrid"), ("Francia","Paris"),("Italia","Roma"),("Inglaterra","Londres"),("Alemania","Berlin",("Rusia","Moscu"),("Turquia","Istambul"),("China","Pekin"), ("Japon","Tokio"),("Emiratos Arabes","Dubai"),("Argentina","Buenos Aires"),("Brasil","Brasilia"),("Colombia","Bogota"),("Uruguay","Montevideo")]
+[("España","Madrid"), ("Francia","Paris"),("Italia","Roma"),("Inglaterra","Londres"),("Alemania","Berlin",("Rusia","Moscu"),
+("Turquia","Istambul"),("China","Pekin"), ("Japon","Tokio"),("Emiratos Arabes","Dubai"),("Argentina","Buenos Aires"),
+("Brasil","Brasilia"),("Colombia","Bogota"),("Uruguay","Montevideo")]
 ```
+Esta lista contiene tuplas ("pais", "capital"). 
+
+El consumidor debe imprimir un mensaje: "La capital de "pais" es "capital".
+
 El programa no debe mostrar inconsistencias ni errores.
+
+**Guardar el resultado en un archivo python con nombre: *Productor_Consumidor_2.py***
