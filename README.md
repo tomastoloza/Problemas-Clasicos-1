@@ -35,6 +35,4 @@ Esta lista contiene tuplas ("pais", "capital").
 
 El consumidor debe imprimir un mensaje: "La capital de "pais" es "capital".
 
-El programa no debe mostrar inconsistencias ni errores.
-
-**Guardar el resultado en un archivo python con nombre: *Productor_Consumidor_2.py***
+El programa no debe mostrar inconsistencias ni errores debidos a condiciones de carrera o falta de sincronización.
