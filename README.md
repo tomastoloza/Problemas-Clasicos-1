@@ -10,9 +10,10 @@ El siguiente archivo python, contiene la definición de la clase ***listaFinita*
     al tamaño (cantidad de objetos) de la lista.
 
 A continuación implementa dos objetos derivados de Thread, un "Productor" que inserta elementos en la lista y un "Consumidor" que extrae elementos de la lista.
-Finalmente instancia un conjuntos de threads Productor y Consumidor
 
-"""
+Finalmente instancia una lista (listaFinita) de un tamaño especifico y dos conjuntos de hilos Productor y Consumidor
+
+
  
 1. Leer y analizar que hace el código de este programa. 
 **Analizar hasta comprender todas las líneas del código**
@@ -32,6 +33,110 @@ Finalmente instancia un conjuntos de threads Productor y Consumidor
 ```
 Esta lista contiene tuplas ("pais", "capital"). 
 
+Por ejemplo:
+````
+La capital de Argentina es Buenos Aires
+````
+
 El consumidor debe imprimir un mensaje: "La capital de "pais" es "capital".
 
 El programa no debe mostrar inconsistencias ni errores debidos a condiciones de carrera o falta de sincronización.
+
+
+
+
+# Lectores - Escritor
+
+## Ejercicio 3
+
+````
+rwlock.py
+````
+
+El siguiente archivo python, contiene la definición de la clase ***RWLock***, que utilizamos en uno de los ejemplos en la clase en vivo del 30/4.
+Esta clase implementa reader-writers locks con PREFERENCIA de LECTURA (Read Preffering RW Locks).
+
+Métodos:
+
+    r_acquire()     # Adquiere READ LOCK
+    
+    r_relaase()     # libera READ LOCK
+    
+    w_aquire()      # Adquiere READ LOCK
+    
+    w_release()     # libera READ LOCK
+    
+1. Leer y analizar que hace el código de este programa. **Analizar hasta comprender todas las líneas del código** y responder:
+
+    a. Cuantos Locks hay definidos y cual de ellos asegura exclusión mútua a los writers?
+    
+    b. Del análisis de los métodos r_acquire() y r_release(), que se transcribe a continuación:
+    
+```
+    def r_acquire(self):
+        self.num_r_lock.acquire()
+        self.num_r += 1
+        if self.num_r == 1:
+            self.w_lock.acquire()
+        self.num_r_lock.release()
+
+    def r_release(self):
+        assert self.num_r > 0
+        self.num_r_lock.acquire()
+        self.num_r -= 1
+        if self.num_r == 0:
+            self.w_lock.release()
+        self.num_r_lock.release()
+```
+
+    b-1. Que cuenta la variable numerica num_r ?
+    
+    b-2. Si n procesos lectores solicitan concurrentemente el w_lock para lectura (llamando a r_acquire), cual de todos obtiene efectivamente el w_lock? Que ocurre con  los demás procesos que lo requirieron? Se bloquean o continúan la ejecución? Por que?
+
+    b-3. En que circunstancias el proceso lector libera el lock w_lock?
+
+    b-4. Que ocurre si n procesos lectores solicitaron el w_lock  para lectura (llamando a r_acquire) y un proceso escritor solicita el w_lock para escritura (llamando a w_acquire)? Se le da prioridad al escritor o debe esperar a que todos los lectores terminen?
+    
+    
+## Ejercicio 4
+
+1. Utilizando la clase RWLock escribir un programa que implemente la siguiente aplicación Lectores-Escritor:
+   
+Los procesos lectores y escritores utlizan una lista común (partido) como la siguiente: *partido = ["equipo1", int_goles1, "equipo2", int_goles2]*, por ejemplo:
+
+`````
+["Gimnasia", 1, "Estudiantes", 0]
+`````
+
+**Escritor**
+Debe ejecutar un loop infinito en el cual actualice la lista ***partido*** de la siguiente manera:
+
+Debe tomar un par de equipos ("equipo1" y "equipo2") al azar de la siguiente lista:
+
+````
+equipos = ["Boca", "River", "Racing", "Independiente", "San Lorenzo", "Huracán", "Gimnasia", "Estudiantes", "Velez", "Ferro", "Lanus", "Quilmes"]
+````
+Los goles anotados por cada equipo (int_goles1, int_goles2) serán valores enteros entre 0 y 3 generados aleatoriamente. 
+
+Luego de actualizar la lista *partidos*, debe imprimr un mensaje indicando que hizo la actualización, indentificando al hilo que hizo el cambio. No es necesario que incluya el detelle del partido en ese mensaje. 
+
+Por ejemplo:
+
+````
+Partido actualizado por Escritor-1
+````
+
+Nota: incluir un retardo (sleep) aleatorio entre 1 y 2 segundos antes de la siguiente iteración en el loop infinito.
+
+**Lector**
+En un loop infinito, el **lector** debe leer los datos de la lista ***partido*** e imprimir un mensaje con el resultado del partido. El mensaje debe identificar al lector. 
+
+Por ejemplo:
+
+````
+Lector-14: el resultado fue: Gimnasia 1 - Estudiantes 0
+````
+
+El programa debe arrancar 2 hilos escritores y 5 hilos lectores.
+Agregar el código que sea necesario para que le hilo principal no termine el progama al lanzar todas las threads.
+
