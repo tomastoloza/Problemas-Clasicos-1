@@ -23,6 +23,8 @@ Finalmente instancia una lista (listaFinita) de un tamaño especifico y dos conj
 3. **Utilizando Locks o RLocks solamente**, modificar los objetos Productor y Consumidor de modo que solucionen los erroes e inconsistencias.
 
 
+
+
 ## Ejercicio 2
 
 1. **Sin alterar la clase *listaFinita***, modificar el programa de modo que el productor inserte objetos tupla de strings **tomados al azar** de la siguiente lista. 
@@ -41,6 +43,7 @@ La capital de Argentina es Buenos Aires
 El consumidor debe imprimir un mensaje: "La capital de "pais" es "capital".
 
 El programa no debe mostrar inconsistencias ni errores debidos a condiciones de carrera o falta de sincronización.
+
 
 
 
@@ -91,14 +94,20 @@ Métodos:
 
     b-1. Que cuenta la variable numerica num_r ?
     
-    b-2. Si n procesos lectores solicitan concurrentemente el w_lock para lectura (llamando a r_acquire), cual de todos obtiene efectivamente el w_lock? Que ocurre con  los demás procesos que lo requirieron? Se bloquean o continúan la ejecución? Por que?
+    b-2. Si n procesos lectores solicitan concurrentemente el w_lock para lectura (llamando a r_acquire), cual de todos obtiene efectivamente 
+    el w_lock? Que ocurre con  los demás procesos que lo requirieron? Se bloquean o continúan la ejecución? Por que?
 
     b-3. En que circunstancias el proceso lector libera el lock w_lock?
 
-    b-4. Que ocurre si n procesos lectores solicitaron el w_lock  para lectura (llamando a r_acquire) y un proceso escritor solicita el w_lock para escritura (llamando a w_acquire)? Se le da prioridad al escritor o debe esperar a que todos los lectores terminen?
+    b-4. Que ocurre si n procesos lectores solicitaron el w_lock  para lectura (llamando a r_acquire) y un proceso escritor solicita el w_lock 
+    para escritura (llamando a w_acquire)? Se le da prioridad al escritor o debe esperar a que todos los lectores terminen?
+    
+    
+    
     
     
 ## Ejercicio 4
+
 
 1. Utilizando la clase RWLock escribir un programa que implemente la siguiente aplicación Lectores-Escritor:
    
@@ -109,6 +118,7 @@ Los procesos lectores y escritores utlizan una lista común (partido) como la si
 `````
 
 **Escritor**
+
 Debe ejecutar un loop infinito en el cual actualice la lista ***partido*** de la siguiente manera:
 
 Debe tomar un par de equipos ("equipo1" y "equipo2") al azar de la siguiente lista:
@@ -129,6 +139,7 @@ Partido actualizado por Escritor-1
 Nota: incluir un retardo (sleep) aleatorio entre 1 y 2 segundos antes de la siguiente iteración en el loop infinito.
 
 **Lector**
+
 En un loop infinito, el **lector** debe leer los datos de la lista ***partido*** e imprimir un mensaje con el resultado del partido. El mensaje debe identificar al lector. 
 
 Por ejemplo:
