@@ -137,7 +137,7 @@ Por ejemplo:
 Partido actualizado por Escritor-1
 ````
 
-Nota: incluir un retardo (sleep) aleatorio entre 1 y 2 segundos antes de la siguiente iteración en el loop infinito.
+Incluir un retardo (sleep) aleatorio entre 1 y 2 segundos antes de la siguiente iteración en el loop infinito.
 
 **Lector**
 
@@ -148,7 +148,27 @@ Por ejemplo:
 ````
 Lector-14: el resultado fue: Gimnasia 1 - Estudiantes 0
 ````
+Incluir un retardo (sleep) aleatorio entre 1 y 2 segundos **luego liberar los locks** y antes de la próxima iteración. Por ejemplo:
+````
+finally:
+     mi_rwlock.r_release()
+     time.sleep(random.randint(1,2))  # Colocar el retardo DESPUES de liberar el lock, no antes.
+`````
 
-El programa debe arrancar 2 hilos escritores y 5 hilos lectores.
+
+El programa debe arrancar 1 hilo escritor y 4 hilos lectores.
 Agregar el código que sea necesario para que le hilo principal no termine el progama al lanzar todas las threads.
 
+
+2. Modificar al **lector**, colocando el retardo aleatorio (entre 1 y 2 segundos) **ANTES de liberar los locks**, la idea es simular que el lector realiza mas operaciones antes de liberar el lock. Por ejemplo:
+```` 
+finally:
+    time.sleep(random.randint(1,2))  # Colocar el retardo DESPUES de liberar el lock, no antes.
+    mi_rwlock.r_release() 
+`````
+Ejecute el programa y observe el resultado. Hay alguna inconsistencia o error? A que se debe?
+
+***Nota: este ejercicio es muy dependiente de como hayan implementado la solución. Si no observa ninguna inconsistencia, consulte con el profesor.***
+
+
+3. Que cambiaría si se utilizara in Reading-Writing lock de preferencia de escritura, en vez del que estamos usando (preferencia de lectura).
