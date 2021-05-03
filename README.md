@@ -44,7 +44,7 @@ El consumidor debe imprimir un mensaje: "La capital de "pais" es "capital".
 
 El programa no debe mostrar inconsistencias ni errores debidos a condiciones de carrera o falta de sincronización.
 
-
+**Nota: para la impresión de mensajes utlizar preferentemente el módulo *logging***.
 
 
 
@@ -129,13 +129,14 @@ equipos = ["Boca", "River", "Racing", "Independiente", "San Lorenzo", "Huracán"
 ````
 Los goles anotados por cada equipo (int_goles1, int_goles2) serán valores enteros entre 0 y 3 generados aleatoriamente. 
 
-Luego de actualizar la lista *partidos*, debe imprimr un mensaje indicando que hizo la actualización, indentificando al hilo que hizo el cambio. No es necesario que incluya el detelle del partido en ese mensaje. 
+Luego de actualizar la lista *partidos*, debe imprimr un mensaje indicando que hizo la actualización, indentificando al hilo que hizo el cambio. No es necesario que incluya el detalle del partido en ese mensaje. 
 
 Por ejemplo:
 
 ````
 Partido actualizado por Escritor-1
 ````
+**Nota: para la impresión de mensajes utlizar preferentemente el módulo *logging***.
 
 Incluir un retardo (sleep) aleatorio entre 1 y 2 segundos antes de la siguiente iteración en el loop infinito.
 
@@ -148,6 +149,8 @@ Por ejemplo:
 ````
 Lector-14: el resultado fue: Gimnasia 1 - Estudiantes 0
 ````
+**Nota: para la impresión de mensajes utlizar preferentemente el módulo *logging***.
+
 Incluir un retardo (sleep) aleatorio entre 1 y 2 segundos **luego liberar los locks** y antes de la próxima iteración. Por ejemplo:
 ````
 finally:
@@ -163,7 +166,7 @@ Agregar el código que sea necesario para que le hilo principal no termine el pr
 2. Modificar al **lector**, colocando el retardo aleatorio (entre 1 y 2 segundos) **ANTES de liberar los locks**, la idea es simular que el lector realiza mas operaciones antes de liberar el lock. Por ejemplo:
 ```` 
 finally:
-    time.sleep(random.randint(1,2))  # Colocar el retardo DESPUES de liberar el lock, no antes.
+    time.sleep(random.randint(1,2))  # Colocar el retardo ANTES de liberar el lock.
     mi_rwlock.r_release() 
 `````
 Ejecute el programa y observe el resultado. Hay alguna inconsistencia o error? A que se debe?
