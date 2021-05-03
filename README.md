@@ -124,7 +124,8 @@ Debe ejecutar un loop infinito en el cual actualice la lista ***partido*** de la
 Debe tomar un par de equipos ("equipo1" y "equipo2") al azar de la siguiente lista:
 
 ````
-equipos = ["Boca", "River", "Racing", "Independiente", "San Lorenzo", "Huracán", "Gimnasia", "Estudiantes", "Velez", "Ferro", "Lanus", "Quilmes"]
+equipos = ["Boca", "River", "Racing", "Independiente", "San Lorenzo", "Huracán", "Gimnasia", 
+"Estudiantes", "Velez", "Ferro", "Lanus", "Quilmes"]
 ````
 Los goles anotados por cada equipo (int_goles1, int_goles2) serán valores enteros entre 0 y 3 generados aleatoriamente. 
 
