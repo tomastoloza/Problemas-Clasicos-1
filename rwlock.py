@@ -40,11 +40,11 @@
 
 """
 
-
 # _______________________________________________________________________
 # Imports
 
-from threading  import Lock
+from threading import Lock
+
 
 # _______________________________________________________________________
 # Class
@@ -73,6 +73,7 @@ class RWLock(object):
                 mi_RWLock.w_release()
 
     """
+
     # Constructor
 
     def __init__(self):
@@ -98,7 +99,6 @@ class RWLock(object):
         if self.num_r == 0:
             self.w_lock.release()
         self.num_r_lock.release()
-
 
     # ___________________________________________________________________
     # Métodos de Escritura (Writing).
